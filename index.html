@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<!-- 洋風厨房五感｜LP v4.4（index.html＋/assets/ 。Netlify は本フォルダをドラッグ：index.html と assets/ のみで可） -->
+<html lang="ja" id="top">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>洋風厨房 五感｜総社・清音の洋食</title>
+  <meta name="description" content="岡山県総社市清音の洋風創作料理「洋風厨房 五感」。地産地消と手作りのランチ・ディナー、記念日や少し良いランチに。ご予約・空席は0866-31-5696。">
+  <meta name="keywords" content="洋風厨房五感,五感,総社市,清音,ランチ,ディナー,洋食,パスタ,地産地消,ヘルシーランチ,岡山県,女子会,宴会">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <meta name="theme-color" content="#682418">
+  <meta name="format-detection" content="telephone=yes">
+  <link rel="canonical" href="https://gokan.example.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="洋風厨房 五感">
+  <meta property="og:title" content="洋風厨房 五感｜総社・清音の洋食。五感で愉しむ一皿">
+  <meta property="og:description" content="少し良いランチ、記念日のディナー。地産地消と手作り。空席・ご予約はお電話で。">
+  <meta property="og:url" content="https://gokan.example.com/">
+  <!-- og:image は公開ドメイン確定後、本番の絶対URL（例: https://（ドメイン）/assets/menu-lunch.jpg）へ差し替え -->
+  <meta property="og:image" content="/assets/menu-lunch.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="洋風厨房 五感｜総社・清音の洋食">
+  <meta name="twitter:description" content="五感で愉しむランチとディナー。お電話0866-31-5696">
+  <meta name="twitter:image" content="/assets/menu-lunch.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- ========== 画像差し替えマップ（B案） ==========
+       ① :root の --img-hero-*（ヒーロー3枚） ② 本文中の assets/ を一括置換
+       logo.png, logo-fallback.svg, gallery-a.jpg, menu-pasta.jpg, menu-pasta-alt.jpg,
+       menu-lunch.jpg, menu-special.jpg, hero-2.jpg, hero-3.jpg, gallery-b.jpg, dinner.jpg
+       ※ローカル画像はすべてプレフィックス「assets/」で統一（OG・地図iframe等の外部URL除く）
+  -->
+  <!-- LCP：ヒーロー1枚目と同じファイルを指定（:root --img-hero-lunch 変更時はここも合わせる） -->
+  <link rel="preload" href="/assets/menu-lunch.jpg" as="image" fetchpriority="high">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { ink: '#1a1a1a', mist: '#6b635c', clay: '#5c4033', rust: '#8b4513', paper: '#f7f4ef' },
+          fontFamily: { serif: ['"Noto Serif JP"', 'serif'], sans: ['"Noto Sans JP"', 'sans-serif'] }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --paper: #f7f4ef;
+      --ink: #1a1a1a;
+      --clay: #5c4033;
+      --rust: #8b4513;
+      /* 画像パス（1箇所変更でヒーロー3枚を差し替え可） */
+      --img-hero-lunch: url("/assets/menu-lunch.jpg");
+      --img-hero-pasta: url("/assets/menu-pasta.jpg");
+      --img-hero-store: url("/assets/gallery-a.jpg");
+    }
+    html {
+      scroll-behavior: smooth;
+      font-size: 110%;
+    }
+    body {
+      font-family: "Noto Sans JP", system-ui, sans-serif;
+      font-weight: 400;
+      color: var(--ink);
+      background-color: var(--paper);
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E"),
+        linear-gradient(180deg, rgba(255,255,255,.5) 0%, rgba(247,244,239,0) 28%, rgba(92,64,51,.03) 100%);
+      background-size: 320px 320px, 100% 100%;
+    }
+    /* 本文の行間（leading-relaxed 相当）・p/li はウェイト400に統一（strong 内の font-medium は維持） */
+    main :where(p, li, dd, blockquote) {
+      line-height: 1.625;
+    }
+    main :where(p, li, dd) {
+      font-weight: 400 !important;
+    }
+    .font-serif { font-family: "Noto Serif JP", Georgia, serif; }
+    .vertical-rl { writing-mode: vertical-rl; text-orientation: mixed; letter-spacing: 0.35em; }
+    .hero-grad {
+      background: linear-gradient(165deg, rgba(20,16,14,.25) 0%, rgba(42,36,32,.55) 45%, rgba(20,16,14,.75) 100%);
+    }
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 1s cubic-bezier(.22,1,.36,1), transform 1s cubic-bezier(.22,1,.36,1); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .photo-vivid img { transition: none !important; transform: none !important; filter: none !important; }
+    }
+    .sense-line { height: 3rem; width: 1px; background: linear-gradient(to bottom, transparent, rgba(92,64,51,.35), transparent); }
+    .skip-a11y { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    .skip-a11y:focus { position: fixed; left: 1rem; top: 1rem; z-index: 100; width: auto; height: auto; overflow: visible; padding: 0.5rem 1rem; background: #fff; color: #1a1a1a; box-shadow: 0 4px 20px rgba(0,0,0,.12); border-radius: 2px; }
+    /* Atelier：常時フルカラー。ホバー／タップでわずかに拡大＋明るさアップ */
+    .photo-vivid { position: relative; overflow: hidden; border-radius: 2px; border: 1px solid rgba(226,216,203,.65); background: #ebe6df; transition: box-shadow 0.75s ease; }
+    .photo-vivid img { display: block; width: 100%; height: 100%; object-fit: cover; filter: brightness(1) saturate(1.03); transition: transform 1s cubic-bezier(.22,1,.36,1), filter 0.75s ease, box-shadow 0.75s ease; }
+    @media (hover: hover) and (pointer: fine) {
+      .photo-vivid:hover { box-shadow: 0 14px 32px rgba(42,36,32,.16); }
+      .photo-vivid:hover img { transform: scale(1.05); filter: brightness(1.1) saturate(1.1) contrast(1.03); }
+    }
+    @media (hover: none) {
+      .photo-vivid:active img { transform: scale(1.04); filter: brightness(1.08) saturate(1.06) contrast(1.02); }
+    }
+    .photo-vivid:focus-within { box-shadow: 0 12px 28px rgba(42,36,32,.12); }
+    .photo-vivid:focus-within img { transform: scale(1.045); filter: brightness(1.08) saturate(1.07) contrast(1.02); }
+    .hero-stage { position: absolute; inset: 0; }
+    .hero-slide {
+      position: absolute; inset: 0;
+      opacity: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      animation: heroKen24 24s ease-in-out infinite;
+    }
+    .hero-slide.s1 { animation-delay: 0s; }
+    .hero-slide.s2 { animation-delay: 8s; }
+    .hero-slide.s3 { animation-delay: 16s; }
+    /* 各スライド約8秒の「呼吸」リズム（24秒周期×3枚） */
+    @keyframes heroKen24 {
+      0% { opacity: 0; transform: scale(1.1); }
+      2.5% { opacity: 1; }
+      29% { opacity: 1; }
+      33.33% { opacity: 0; transform: scale(1.02); }
+      100% { opacity: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-slide { animation: none !important; opacity: 0 !important; transform: none !important; }
+      .hero-slide.s1 { opacity: 1 !important; }
+    }
+    #lightbox.is-open { display: flex !important; }
+    .lb-open { cursor: zoom-in; }
+    /* 全写真：グレースケール0（フルカラー厳守）。※ホバー時の brightness 等は各セレクタで上書き */
+    body img { filter: grayscale(0); }
+    .chef-timeline { position: relative; }
+    .chef-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0.4rem;
+      top: 0.35rem;
+      bottom: 1.75rem;
+      width: 1px;
+      background: linear-gradient(180deg, rgba(92,64,51,.32), rgba(139,69,19,.22), rgba(92,64,51,.28));
+    }
+    @media (min-width: 768px) {
+      .chef-timeline::before { left: 0.85rem; bottom: 1.5rem; }
+    }
+    /* ヒーロー1枚目：湯気・瑞々しさの联想（極端マクロ＋軽い湯気風オーバーレイ） */
+    .hero-sizzle::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(70% 45% at 50% 42%, rgba(255,255,255,.14) 0%, transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.06) 0%, transparent 22%, transparent 78%, rgba(20,16,14,.12) 100%);
+      mix-blend-mode: soft-light;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-sizzle::after { display: none; }
+    }
+    /* Atelier：料理名キャプション（ホバー／フォーカスでふわっと表示） */
+    .atelier-cap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      padding: 0.5rem 0.65rem 0.55rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,.95);
+      background: linear-gradient(0deg, rgba(20,16,14,.72) 0%, rgba(20,16,14,.35) 70%, transparent 100%);
+      opacity: 0;
+      transform: translateY(6px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+      pointer-events: none;
+      text-align: center;
+      font-family: "Noto Serif JP", Georgia, serif;
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .photo-vivid:hover .atelier-cap { opacity: 1; transform: translateY(0); }
+    }
+    .photo-vivid:focus-within .atelier-cap { opacity: 1; transform: translateY(0); }
+    /* タッチ端末：ホバー不可のため料理名を常時表示（シズル優先） */
+    @media (hover: none) {
+      .atelier-cap { opacity: 1; transform: none; transition: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .atelier-cap { transition: none; }
+      .photo-vivid:hover .atelier-cap, .photo-vivid:focus-within .atelier-cap { transform: none; }
+    }
+    /* ページ先頭へ（モバイルCTAと重ならないよう上げる） */
+    #to-top {
+      position: fixed;
+      z-index: 55;
+      right: 0.75rem;
+      bottom: 5.5rem;
+      width: 2.35rem;
+      height: 2.35rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(255,255,255,.35);
+      background: rgba(92,64,51,.88);
+      color: #fff;
+      font-size: 0.75rem;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(42,36,32,.2);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease, background 0.2s ease;
+    }
+    #to-top.is-visible { opacity: 1; visibility: visible; }
+    #to-top:hover { background: rgba(74,48,36,.95); }
+    @media (min-width: 768px) {
+      #to-top { right: 1.25rem; bottom: 1.5rem; }
+    }
+    /* 下部固定CTA：熟成ソースのような深い赤褐 */
+    .mobile-cta-sauce {
+      background: linear-gradient(180deg, #3d120c 0%, #4f1a12 22%, #682418 48%, #7a2e1c 72%, #863a22 100%);
+      box-shadow: inset 0 3px 0 rgba(255, 190, 140, 0.14), 0 -14px 40px rgba(18, 6, 4, 0.5);
+      border-top: 1px solid rgba(255, 200, 170, 0.22);
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://gokan.example.com/#website",
+        "url": "https://gokan.example.com/",
+        "name": "洋風厨房 五感",
+        "inLanguage": "ja",
+        "publisher": { "@id": "https://gokan.example.com/#restaurant" }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://gokan.example.com/#webpage",
+        "url": "https://gokan.example.com/",
+        "name": "洋風厨房 五感｜総社・清音の洋食",
+        "isPartOf": { "@id": "https://gokan.example.com/#website" },
+        "about": { "@id": "https://gokan.example.com/#restaurant" },
+        "primaryImageOfPage": { "@type": "ImageObject", "url": "/assets/menu-lunch.jpg", "width": 1200, "height": 800 },
+        "description": "岡山県総社市清音の洋風創作料理。地産地消と手作りのランチ・ディナー。",
+        "inLanguage": "ja"
+      },
+      {
+        "@type": "Restaurant",
+        "@id": "https://gokan.example.com/#restaurant",
+        "name": "洋風厨房 五感",
+        "alternateName": "五感",
+        "image": [
+          "/assets/menu-lunch.jpg",
+          "/assets/menu-pasta.jpg",
+          "/assets/gallery-a.jpg",
+          "/assets/dinner.jpg"
+        ],
+        "logo": "/assets/logo.png",
+        "url": "https://gokan.example.com/",
+        "telephone": "+81866315696",
+        "priceRange": "¥900–¥6000",
+        "servesCuisine": ["洋食", "創作洋食", "フレンチ風"],
+        "acceptsReservations": true,
+        "currenciesAccepted": "JPY",
+        "paymentAccepted": "Cash",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "清音上中島167-12",
+          "addressLocality": "総社市",
+          "addressRegion": "岡山県",
+          "postalCode": "719-1175",
+          "addressCountry": "JP"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 34.6465951,
+          "longitude": 133.7335958
+        },
+        "hasMap": "https://www.google.com/maps?q=34.6465951,133.7335958",
+        "openingHours": ["Tu-Su 11:30-14:00", "Tu-Su 17:30-20:30"],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "name": "ランチ",
+            "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "11:30",
+            "closes": "14:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "name": "ディナー",
+            "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            "opens": "17:30",
+            "closes": "20:30"
+          }
+        ],
+        "areaServed": { "@type": "City", "name": "総社市", "containedInPlace": { "@type": "AdministrativeArea", "name": "岡山県" } },
+        "sameAs": [
+          "https://www.instagram.com/gokan0629/"
+        ],
+        "potentialAction": {
+          "@type": "ReserveAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "tel:+81866315696",
+            "actionPlatform": ["http://schema.org/DesktopWebPlatform", "http://schema.org/MobileWebPlatform"]
+          }
+        },
+        "slogan": "五感で愉しむ、総社の四季。",
+        "maximumAttendeeCapacity": 18,
+        "hasMenu": "https://www.instagram.com/gokan0629/",
+        "parkingAvailable": true,
+        "amenityFeature": [
+          { "@type": "LocationFeatureSpecification", "name": "駐車場", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "席数", "value": "最大18席（8名以上で貸切可）" }
+        ],
+        "knowsAbout": ["地産地消", "森のくまさん", "岡山県産米", "九州産肉", "瀬戸内の魚", "総社産野菜", "そうじゃ！ヘルシーメニュー認定", "ランチ", "ディナーコース", "手作りパスタ", "食の安心・安全"],
+        "award": {
+          "@type": "Award",
+          "name": "そうじゃ！ヘルシーメニュー認定",
+          "alternateName": "総社市ヘルシーメニュー認定制度",
+          "description": "総社市の公的制度「そうじゃ！ヘルシーメニュー」（市長を代表とする行政による認定制度）。五感ランチは一日に必要な野菜摂取量の目安の約三分の一以上を意識したワンプレートとして認定されています。"
+        },
+        "employee": { "@id": "https://gokan.example.com/#chef" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://gokan.example.com/#chef",
+        "name": "洋風厨房 五感 シェフ",
+        "jobTitle": "シェフ",
+        "knowsLanguage": "ja",
+        "worksFor": { "@id": "https://gokan.example.com/#restaurant" },
+        "alumniOf": [
+          { "@type": "Organization", "name": "全日空ホテルクレメント高松（現JRホテルクレメント高松）" },
+          { "@type": "Organization", "name": "メルパルク岡山" }
+        ],
+        "description": "1998年より調理業に従事。全日空ホテルクレメント高松（現JRホテルクレメント高松）にてカフェ＆レストラン、イタリアン、宴会婚礼などを担当。メルパルク岡山を経て、2016年6月29日に岡山県総社市清音で洋風厨房五感を開業。"
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="antialiased text-ink pb-24 md:pb-0">
+
+  <a href="#main" class="skip-a11y">本文へ</a>
+
+  <header class="fixed top-0 inset-x-0 z-50 bg-paper/90 backdrop-blur-md border-b border-stone-200/60" id="site-header">
+    <div class="max-w-6xl mx-auto px-5 h-16 md:h-[4.25rem] flex items-center justify-between gap-4">
+      <a href="#top" class="flex shrink-0 items-center gap-2" aria-label="洋風厨房 五感 ページ先頭へ">
+        <!-- IMG:logo -->
+        <img src="/assets/logo.png" alt="洋風厨房 五感" width="140" height="44" class="h-9 w-auto object-contain md:h-10" loading="eager" decoding="async" onerror="this.src='/assets/logo-fallback.svg'">
+      </a>
+      <nav class="hidden items-center gap-6 md:flex lg:gap-8" aria-label="ページ内">
+        <a href="#story" class="text-[10px] tracking-[0.28em] text-mist hover:text-clay">Story</a>
+        <a href="#lunch-menu" class="text-[10px] tracking-[0.28em] text-mist hover:text-clay">Lunch</a>
+        <a href="#dinner-info" class="text-[10px] tracking-[0.28em] text-mist hover:text-clay">Dinner</a>
+        <a href="#access" class="text-[10px] tracking-[0.28em] text-mist hover:text-clay">Access</a>
+      </nav>
+      <a href="tel:0866315696" class="hidden border border-clay/25 px-5 py-2.5 text-[11px] tracking-[0.2em] text-clay hover:bg-clay hover:text-white md:inline-flex md:items-center">
+        空席確認・ご予約
+      </a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero：Ken Burns 24s／1枚目＝五感ランチ超寄り（:root --img-hero-lunch で差替） -->
+    <section class="hero-sizzle relative flex min-h-[100dvh] items-stretch pt-16 md:pt-[4.25rem]" aria-label="メインビジュアル">
+      <div class="absolute inset-0" aria-hidden="true">
+        <div class="hero-stage">
+          <div class="hero-slide s1" style="background-image:linear-gradient(165deg,rgba(20,16,14,.26) 0%,rgba(42,36,32,.42) 48%,rgba(20,16,14,.62) 100%),var(--img-hero-lunch);background-size:148%;background-position:center 62%;"></div>
+          <div class="hero-slide s2" style="background-image:linear-gradient(165deg,rgba(20,16,14,.35) 0%,rgba(42,36,32,.52) 50%,rgba(20,16,14,.74) 100%),var(--img-hero-pasta);background-position:center 42%;"></div>
+          <div class="hero-slide s3" style="background-image:linear-gradient(165deg,rgba(20,16,14,.3) 0%,rgba(42,36,32,.48) 50%,rgba(20,16,14,.7) 100%),var(--img-hero-store);background-position:center center;"></div>
+        </div>
+        <div class="pointer-events-none absolute inset-0 hero-grad"></div>
+      </div>
+      <div class="relative z-[1] w-full max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-24 flex flex-col md:flex-row md:items-end md:justify-between gap-12 md:gap-8 min-h-[calc(100dvh-4rem)]">
+        <div class="mt-auto md:mb-0 max-w-xl reveal">
+          <p class="font-serif text-white/90 text-xs md:text-sm tracking-[0.45em] mb-6 md:mb-8">岡山県総社市清音</p>
+          <h1 class="font-serif text-white text-[clamp(1.75rem,5.5vw,3.25rem)] leading-[1.35] tracking-wide font-medium">
+            五感で愉しむ、<br>この日の一皿。
+          </h1>
+          <p class="mt-4 text-white/75 text-[11px] md:text-xs tracking-[0.2em] font-light border-l border-white/40 pl-4 max-w-md">
+            週替わり五感ランチ　税込2,000円（前菜・スープ・メインまたはパスタ・ドリンク・デザート）
+          </p>
+          <p class="mt-6 md:mt-8 text-white/80 text-sm md:text-[15px] font-light leading-loose tracking-wide max-w-md">
+            少し良いランチを。記念日の夜を。湯気立つパスタから、ワンプレの彩りまで——まずは、その日の皿で。
+          </p>
+        </div>
+        <div class="hidden md:flex text-white/70 text-xs tracking-[0.5em] vertical-rl h-[min(50vh,22rem)] border-r border-white/20 pr-6 reveal" aria-hidden="true">
+          洋風厨房　五感
+        </div>
+      </div>
+    </section>
+
+    <!-- Lead（Story） -->
+    <section id="story" class="py-24 md:py-36 px-5 md:px-8 scroll-mt-24 md:scroll-mt-28">
+      <div class="max-w-3xl mx-auto text-center reveal">
+        <p class="font-serif text-rust text-[10px] md:text-xs tracking-[0.5em] uppercase mb-8">Philosophy</p>
+        <p class="font-serif text-clay text-2xl md:text-3xl leading-relaxed font-medium">
+          説明ではなく、<br class="md:hidden">からだでわかるおいしさ。
+        </p>
+        <div class="sense-line mx-auto my-12"></div>
+        <p class="text-mist text-sm md:text-base leading-[2] font-light tracking-wide">
+          主婦の方の「ちょっと贅沢なランチ」も、ふたりの「特別な夜」も、同じ厨房から。見る・聞く・香る・味わう・触れる——店名のとおり、五感をそっと満たす時間をご用意しています。
+        </p>
+      </div>
+      <nav class="reveal mx-auto mt-12 flex max-w-lg flex-wrap justify-center gap-2 px-5 md:mt-14 md:gap-3" aria-labelledby="index-label">
+        <span id="index-label" class="mb-1 w-full text-center font-serif text-[10px] tracking-[0.42em] text-rust">お品書きの索引</span>
+        <a href="#lunch-menu" class="rounded-full border border-clay/40 bg-paper/90 px-4 py-2 text-[11px] tracking-widest text-clay hover:border-clay hover:bg-clay hover:text-paper">Lunch</a>
+        <a href="#dinner-info" class="rounded-full border border-clay/40 bg-paper/90 px-4 py-2 text-[11px] tracking-widest text-clay hover:border-clay hover:bg-clay hover:text-paper">Dinner</a>
+        <a href="#access" class="rounded-full border border-clay/40 bg-paper/90 px-4 py-2 text-[11px] tracking-widest text-clay hover:border-clay hover:bg-clay hover:text-paper">Access</a>
+      </nav>
+    </section>
+
+    <!-- 店主のこだわりキーワード（誇りとして提示） -->
+    <section class="py-16 md:py-24 px-5 md:px-8 border-y border-stone-200/60 bg-white/35" aria-labelledby="pride-title">
+      <div class="max-w-6xl mx-auto">
+        <h2 id="pride-title" class="font-serif text-center text-clay text-xs md:text-sm tracking-[0.45em] mb-10 md:mb-12">店主のこだわり</h2>
+        <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+          <div class="reveal text-center border border-stone-200/90 bg-paper/70 px-6 py-10 md:px-8 md:py-12 shadow-sm">
+            <p class="font-serif text-rust text-[10px] tracking-[0.4em] mb-5">Commitment</p>
+            <p class="font-serif text-clay text-xl md:text-2xl tracking-[0.18em] mb-5">地産地消</p>
+            <p class="text-mist text-xs md:text-sm leading-loose font-light tracking-wide">野菜は<strong class="text-ink/85 font-medium">総社産</strong>を中心に国産。ご飯は<strong class="text-ink/85 font-medium">岡山県産米「森のくまさん」</strong>。お肉は<strong class="text-ink/85 font-medium">九州（宮崎・鹿児島）産</strong>を中心に国産、お魚は<strong class="text-ink/85 font-medium">瀬戸内産</strong>をはじめ国産。地元産・国内産で、素材の味をそのまま食卓へ。</p>
+          </div>
+          <div class="reveal text-center border border-stone-200/90 bg-paper/70 px-6 py-10 md:px-8 md:py-12 shadow-sm md:translate-y-4">
+            <p class="font-serif text-rust text-[10px] tracking-[0.4em] mb-5">Craft</p>
+            <p class="font-serif text-clay text-xl md:text-2xl tracking-[0.18em] mb-5">手作り</p>
+            <p class="text-mist text-xs font-light leading-relaxed tracking-wide md:text-sm"><strong class="font-medium text-ink/85">私たちが掲げる食の安心・安全</strong>を大切にし、パスタからデザートまでなるべく<strong class="font-medium text-ink/85">店内で手をかける</strong>こと。工場味のない、体温のある一皿を重ねています。</p>
+          </div>
+          <div class="reveal flex flex-col items-center border-2 border-[#8b1a1a]/20 bg-gradient-to-b from-[#fffdf9] via-[#faf5ee] to-[#f3e8dc] px-6 py-10 md:px-8 md:py-12 shadow-md">
+            <p class="font-serif text-rust text-[10px] tracking-[0.4em] mb-4">Certified</p>
+            <p class="mb-3 text-center font-serif text-[11px] font-medium tracking-[0.2em] text-clay">総社市長認定に連なる<br class="sm:hidden">市公式制度</p>
+            <!-- 市役所ロゴを想起させるエンブレム風 -->
+            <div class="relative w-[min(11.5rem,72vw)] aspect-square shrink-0 mb-6" role="img" aria-label="総社市 そうじゃ！ヘルシーメニュー認定エンブレム">
+              <svg viewBox="0 0 200 200" class="w-full h-full drop-shadow-[0_6px_18px_rgba(60,20,16,.15)]" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="100" cy="100" r="97" fill="#fdf8f3" stroke="#7a1520" stroke-width="2.5"/>
+                <circle cx="100" cy="100" r="86" fill="none" stroke="#c9a227" stroke-width="1.2" opacity=".9"/>
+                <circle cx="100" cy="100" r="78" fill="none" stroke="#7a1520" stroke-width="0.8" stroke-dasharray="3 4" opacity=".45"/>
+                <text x="100" y="54" text-anchor="middle" fill="#5c1218" font-size="11" font-family="Georgia, serif" letter-spacing="0.35em">総社市</text>
+                <text x="100" y="102" text-anchor="middle" fill="#8b1a1a" font-size="22" font-weight="600" font-family="Georgia, serif">そうじゃ！</text>
+                <text x="100" y="128" text-anchor="middle" fill="#3d1810" font-size="10" font-family="system-ui, sans-serif" letter-spacing="0.12em">ヘルシーメニュー</text>
+                <text x="100" y="146" text-anchor="middle" fill="#3d1810" font-size="10" font-family="system-ui, sans-serif" letter-spacing="0.28em">認　定</text>
+                <path d="M100 168 L96 158 h8 z" fill="#c9a227" opacity=".85"/>
+              </svg>
+            </div>
+            <p class="max-w-xs text-center text-xs font-light leading-loose tracking-wide text-mist md:text-sm">五感ランチは、1日に必要な野菜摂取の目安の<strong class="font-medium text-ink/85">約3分の1以上</strong>を意識したワンプレート。<strong class="font-medium text-ink/85">総社市長を代表とする市の公的制度</strong>「そうじゃ！ヘルシーメニュー」に認定された、格付けの明確な一皿です。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 五感 Concept -->
+    <section class="py-20 md:py-28 border-y border-stone-200/50 bg-white/40" aria-labelledby="concept-title">
+      <div class="max-w-6xl mx-auto px-5 md:px-8">
+        <div class="flex flex-col md:flex-row md:items-start gap-16 md:gap-20">
+          <div class="shrink-0 reveal">
+            <h2 id="concept-title" class="font-serif text-clay text-xl md:text-2xl tracking-widest vertical-rl md:h-64 float-none inline-block">
+              五感の設え
+            </h2>
+          </div>
+          <div class="flex-1 grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-14">
+            <article class="reveal">
+              <p class="font-serif text-rust text-[10px] tracking-[0.35em] mb-3">視覚</p>
+              <p class="font-serif text-lg text-ink mb-3">彩り</p>
+              <p class="text-mist text-sm leading-loose font-light"><span class="text-ink/75 font-medium">ツヤッとした</span>ソースの艶、野菜の<span class="text-ink/75 font-medium">鮮やかな</span>コントラスト。皿の上に総社の畑の色をのせ、見た瞬間に「いただきたい」と思っていただけるよう、一枚一枚丁寧に。</p>
+            </article>
+            <article class="reveal">
+              <p class="font-serif text-rust text-[10px] tracking-[0.35em] mb-3">嗅覚</p>
+              <p class="font-serif text-lg text-ink mb-3">香り</p>
+              <p class="text-mist text-sm leading-loose font-light">じっくり煮込んだルーが<span class="text-ink/75 font-medium">じんわり</span>立ち上がり、当日仕立てのスープは<span class="text-ink/75 font-medium">芳醇な</span>深み。扉を開けた瞬間から漂う香りが、ごちそうの始まりを告げます。</p>
+            </article>
+            <article class="reveal">
+              <p class="font-serif text-rust text-[10px] tracking-[0.35em] mb-3">味覚</p>
+              <p class="font-serif text-lg text-ink mb-3">滋味</p>
+              <p class="text-mist text-sm leading-loose font-light"><span class="text-ink/75 font-medium">ジューシーな</span>旨み、野菜の甘み、<span class="text-ink/75 font-medium">コク深い</span>仕上げ。野菜は<strong class="font-medium text-ink/80">総社産</strong>を、魚は<strong class="font-medium text-ink/80">瀬戸内</strong>、肉は<strong class="font-medium text-ink/80">国産</strong>を中心に。パスタからデザートまで店内で手をかけ、素材の旨みを味にします。</p>
+            </article>
+            <article class="reveal">
+              <p class="font-serif text-rust text-[10px] tracking-[0.35em] mb-3">聴覚</p>
+              <p class="font-serif text-lg text-ink mb-3">静けさ</p>
+              <p class="text-mist text-sm leading-loose font-light">小ぢんまりとした店内で、会話と<span class="text-ink/75 font-medium">ささやかな</span>厨房のリズムが心地よい距離感に。日常のざわめきから少し離れ、耳も休まる時間をご用意しています。</p>
+            </article>
+            <article class="reveal">
+              <p class="font-serif text-rust text-[10px] tracking-[0.35em] mb-3">触覚</p>
+              <p class="font-serif text-lg text-ink mb-3">手ざわり</p>
+              <p class="text-mist text-sm leading-loose font-light">パンや揚げ物の<span class="text-ink/75 font-medium">カリッとした</span>食感、器の縁のなめらかさ、布と木の温もり。手に取るたびに感じる丁寧さが、店内の手仕上げの精神と重なります。</p>
+            </article>
+            <article class="reveal border border-stone-200/80 p-6 md:p-8 bg-paper/80">
+              <p class="font-serif text-rust text-[10px] tracking-[0.35em] mb-3">心</p>
+              <p class="font-serif text-lg text-ink mb-3">記憶</p>
+              <p class="text-mist text-sm leading-loose font-light">「また来たい」「次は誰かを連れてきたい」——そう思っていただけることが、私たちにとって何よりの誉れです。</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visual + minimal -->
+    <section class="py-0 md:py-0">
+      <div class="grid md:grid-cols-2">
+        <div class="relative min-h-[70vw] md:min-h-[85vh] reveal">
+          <img src="/assets/gallery-a.jpg" alt="洋風厨房五感の料理" class="absolute inset-0 w-full h-full object-cover" width="1200" height="800" loading="lazy" decoding="async">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent md:hidden"></div>
+        </div>
+        <div class="flex flex-col justify-center px-6 md:px-16 py-16 md:py-24 bg-paper reveal">
+          <p class="font-serif text-rust text-[10px] tracking-[0.45em] mb-6">Season</p>
+          <p class="font-serif text-clay text-2xl md:text-3xl leading-snug mb-8">旬は、<br>いまこの瞬間。</p>
+          <p class="text-mist text-sm leading-loose font-light max-w-sm">総社の野菜を中心に、瀬戸内の恵みも。週替わりのパスタやランチは、公式 Instagram でもご案内しています。</p>
+          <a href="https://www.instagram.com/gokan0629/" class="inline-block mt-10 text-xs tracking-[0.25em] text-clay border-b border-clay/40 pb-1 hover:border-clay transition-colors" target="_blank" rel="noopener noreferrer">Instagram を見る</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ランチ3種：goka-demo 級の説明文を高級レイアウトで再配置 -->
+    <section class="scroll-mt-24 px-5 py-24 md:scroll-mt-28 md:py-32" aria-labelledby="menu-title" id="lunch-menu">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-14 md:mb-20 reveal">
+          <h2 id="menu-title" class="font-serif text-clay text-2xl md:text-3xl tracking-wide">ランチ・愉しみ方</h2>
+          <div class="sense-line mx-auto mt-8"></div>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8 md:gap-10">
+          <article class="reveal group flex flex-col border border-stone-200/85 bg-white/45 shadow-sm overflow-hidden">
+            <div class="overflow-hidden aspect-[4/5] md:aspect-[3/4] shrink-0">
+              <img src="/assets/menu-pasta.jpg" alt="週替わりパスタランチ" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" width="800" height="800" loading="lazy" decoding="async">
+            </div>
+            <div class="p-6 md:p-7 flex flex-col flex-1">
+              <h3 class="font-serif text-lg text-ink tracking-wide">パスタランチ</h3>
+              <p class="font-serif text-rust text-sm mt-1 mb-4 tracking-wide">¥900〜（税込）</p>
+              <div class="space-y-3 text-mist text-xs md:text-sm leading-relaxed font-light flex-1">
+                <p>地元の野菜を主役に。ソースとの相性を考え抜いた週替わりの一皿です。</p>
+                <p>一般的なパスタに加え、他店ではあまりお目にかかれないようなパスタをご用意することもあります。</p>
+                <p class="text-ink/75">今週の内容は公式 <a href="https://www.instagram.com/gokan0629/" class="text-clay border-b border-clay/35 hover:border-clay transition-colors" target="_blank" rel="noopener noreferrer">Instagram</a> でご確認ください。</p>
+              </div>
+            </div>
+          </article>
+          <article class="reveal group flex flex-col border border-stone-200/85 bg-white/45 shadow-sm overflow-hidden md:translate-y-8">
+            <div class="overflow-hidden aspect-[4/5] md:aspect-[3/4] shrink-0">
+              <img src="/assets/menu-lunch.jpg" alt="週替わり五感ランチ" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" width="800" height="800" loading="lazy" decoding="async">
+            </div>
+            <div class="p-6 md:p-7 flex flex-col flex-1">
+              <h3 class="font-serif text-lg text-ink tracking-wide">五感ランチ〈週替わり〉</h3>
+              <p class="font-serif text-rust text-sm mt-1 mb-4 tracking-wide">¥2,000（税込）</p>
+              <div class="space-y-3 text-mist text-xs md:text-sm leading-relaxed font-light flex-1">
+                <p>前菜・スープ・週替わりメインまたはパスタ・ドリンク・デザートの構成です。</p>
+                <p>野菜をふんだんに使い、1日に必要な野菜摂取の目安の<strong class="text-ink/80 font-medium">約3分の1以上</strong>を意識したワンプレート。<strong class="text-ink/80 font-medium">総社市「そうじゃ！ヘルシーメニュー」認定</strong>メニューです。</p>
+                <p class="text-ink/75">デザートを追加される場合は<strong class="font-medium text-ink/85">+¥400（税込）</strong>で承ります。</p>
+              </div>
+            </div>
+          </article>
+          <article class="reveal group flex flex-col border border-stone-200/85 bg-white/45 shadow-sm overflow-hidden">
+            <div class="overflow-hidden aspect-[4/5] md:aspect-[3/4] shrink-0">
+              <img src="/assets/menu-special.jpg" alt="スペシャルランチ" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" width="800" height="800" loading="lazy" decoding="async">
+            </div>
+            <div class="p-6 md:p-7 flex flex-col flex-1">
+              <h3 class="font-serif text-lg text-ink tracking-wide">スペシャルランチ</h3>
+              <p class="font-serif text-rust text-sm mt-1 mb-4 tracking-wide">¥2,500（税込）</p>
+              <div class="space-y-3 text-mist text-xs md:text-sm leading-relaxed font-light flex-1">
+                <p>五感ランチにパスタを組み合わせた、ちょっと贅沢な<strong class="text-ink/80 font-medium">フルコース仕様</strong>のランチです。</p>
+                <p>少し良いランチを堪能したい日に。内容の詳細はお電話にてお問い合わせください。</p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="mt-14 md:mt-16 reveal border border-stone-200/70 bg-paper/85 px-6 py-8 md:px-10 md:py-10">
+          <h3 class="font-serif text-clay text-sm tracking-[0.35em] mb-5">ランチ・ご予約のお願い</h3>
+          <ul class="text-mist text-xs md:text-sm leading-[1.95] font-light space-y-2.5 list-disc pl-5 marker:text-clay/55">
+            <li><strong class="text-ink/80 font-medium">11:30オープン時</strong>のご予約をお受けできます。それ以降は店内の状況によりご案内いたします。</li>
+            <li>混雑時はお待たせしたり、ご入店をお断りする場合がございます。</li>
+            <li>週替わりメニューは Instagram でもご案内しています。</li>
+            <li>ご予約・お問い合わせ・キャンセルは<strong class="text-ink/80 font-medium">お電話のみ</strong>で承ります（メール・Webフォーム不可）。</li>
+          </ul>
+        </div>
+
+        <div id="dinner-info" class="scroll-mt-24 mt-12 grid gap-6 md:scroll-mt-28 md:grid-cols-3 md:gap-8 reveal">
+          <div class="border border-stone-200/80 bg-white/40 p-6 md:p-7">
+            <p class="font-serif text-rust text-[10px] tracking-[0.35em] mb-2">Dinner</p>
+            <h3 class="font-serif text-ink text-base mb-1">おまかせパスタコース</h3>
+            <p class="font-serif text-clay text-sm mb-3">¥3,000（税込）</p>
+            <p class="text-mist text-xs leading-relaxed font-light">前菜、スープ、パスタ、ドリンク、デザート。</p>
+          </div>
+          <div class="border border-stone-200/80 bg-white/40 p-6 md:p-7">
+            <p class="font-serif text-rust text-[10px] tracking-[0.35em] mb-2">Dinner</p>
+            <h3 class="font-serif text-ink text-base mb-1">おまかせディナーコース</h3>
+            <p class="font-serif text-clay text-sm mb-3">¥4,000（税込）</p>
+            <p class="text-mist text-xs leading-relaxed font-light">前菜、スープ、小パスタ、肉料理、ドリンク、デザート。</p>
+          </div>
+          <div class="border border-stone-200/80 bg-white/40 p-6 md:p-7">
+            <p class="font-serif text-rust text-[10px] tracking-[0.35em] mb-2">Dinner</p>
+            <h3 class="font-serif text-ink text-base mb-1">ご予約コース</h3>
+            <p class="font-serif text-clay text-sm mb-3">¥6,000〜（税込）</p>
+            <p class="text-mist text-xs leading-relaxed font-light"><strong class="text-ink/80 font-medium">2日前まで</strong>のご予約制です。</p>
+          </div>
+        </div>
+        <p class="text-mist text-xs mt-6 leading-relaxed font-light reveal">ディナーは<strong class="text-ink/75 font-medium">コースが基本</strong>となりました。これまでのアラカルト中心から変更し、数は少ないですが<strong class="text-ink/75 font-medium">本日のおすすめ一品</strong>もございます。</p>
+
+        <div class="mt-12 grid md:grid-cols-2 gap-6 md:gap-8 reveal">
+          <div class="border border-stone-200/80 bg-white/35 p-6 md:p-8">
+            <h3 class="font-serif text-clay text-base tracking-wide mb-3">女子会・ご宴会</h3>
+            <ul class="text-mist text-xs md:text-sm leading-[1.9] font-light space-y-2 list-disc pl-4 marker:text-clay/50">
+              <li>最大<strong class="text-ink/80 font-medium">18席</strong>。8名以上で貸切対応可。</li>
+              <li>パーティープラン <strong class="text-ink/80 font-medium">¥5,000〜</strong>／コース <strong class="text-ink/80 font-medium">¥6,000〜</strong>。</li>
+              <li>女子会、同窓会、新年会、忘年会、結婚式二次会など。</li>
+            </ul>
+          </div>
+          <div class="border border-stone-200/80 bg-white/35 p-6 md:p-8">
+            <h3 class="font-serif text-clay text-base tracking-wide mb-3">テイクアウト</h3>
+            <p class="text-mist text-xs md:text-sm leading-relaxed font-light"><strong class="text-ink/80 font-medium">ローストビーフ弁当 ¥2,000（税込）</strong>。それ以外のお弁当もご予算に応じて <strong class="text-ink/80 font-medium">¥3,000〜</strong> で承ります。<strong class="text-ink/80 font-medium">3日前まで</strong>のご予約制です。</p>
+          </div>
+        </div>
+
+        <div class="mt-10 reveal border border-clay/15 bg-clay/[0.04] px-6 py-7 md:px-9 md:py-8">
+          <h3 class="font-serif text-clay text-sm tracking-[0.3em] mb-3">季節メニュー・お知らせ</h3>
+          <p class="mb-0 text-xs font-light leading-relaxed text-mist md:text-sm">2026 ローストビーフ洋風おせちのご予約を受け付けています。季節のご案内・詳細は <a href="https://www.instagram.com/gokan0629/" class="border-b border-clay/35 text-clay hover:border-clay" target="_blank" rel="noopener noreferrer">Instagram</a> または <a href="tel:0866315696" class="border-b border-clay/35 text-clay hover:border-clay">0866-31-5696</a> までお問い合わせください。</p>
+        </div>
+
+        <p class="text-center text-mist text-xs mt-12 md:mt-14 font-light tracking-wider reveal">空席・メニュー詳細は <a href="tel:0866315696" class="text-clay border-b border-clay/30 hover:border-clay">0866-31-5696</a> まで。</p>
+      </div>
+    </section>
+
+    <!-- ビジュアルアーカイブ（常時フルカラー＋ホバー／タップで拡大・明るさ） -->
+    <section class="py-20 md:py-28 px-5 md:px-8 border-t border-stone-200/50 bg-white/25" aria-labelledby="archive-title">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-12 md:mb-16 reveal">
+          <p class="font-serif text-rust text-[10px] tracking-[0.45em] mb-4">Atelier</p>
+          <h2 id="archive-title" class="font-serif text-clay text-xl md:text-2xl tracking-wide">厨房と、週替わりの表情</h2>
+          <div class="sense-line mx-auto mt-8"></div>
+          <p class="mx-auto mt-6 max-w-lg text-xs font-light leading-relaxed tracking-wider text-mist">パスタのソースの艶、店内の光——料理の色はフルカラーのまま。季節ごとの一皿を、記録として。</p>
+        </div>
+        <div class="grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4" id="archive-grid">
+          <figure class="photo-vivid aspect-square reveal overflow-hidden rounded-sm">
+            <button type="button" class="lb-open absolute inset-0 z-[1] block cursor-zoom-in border-0 bg-transparent p-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-clay/50" data-src="/assets/menu-pasta.jpg" data-alt="週替わりパスタの一例" aria-label="週替わりパスタの写真を拡大">
+              <!-- IMG:atelier-pasta-a -->
+              <img src="/assets/menu-pasta.jpg" alt="" width="600" height="600" class="h-full w-full object-cover" loading="lazy" decoding="async">
+            </button>
+            <span class="atelier-cap">週替わりパスタ</span>
+          </figure>
+          <figure class="photo-vivid aspect-square reveal overflow-hidden rounded-sm">
+            <button type="button" class="lb-open absolute inset-0 z-[1] block cursor-zoom-in border-0 bg-transparent p-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-clay/50" data-src="/assets/menu-pasta-alt.jpg" data-alt="週替わりパスタの別カット" aria-label="パスタの写真を拡大">
+              <img src="/assets/menu-pasta-alt.jpg" alt="" width="600" height="600" class="h-full w-full object-cover" loading="lazy" decoding="async">
+            </button>
+            <span class="atelier-cap">パスタ・別角度</span>
+          </figure>
+          <figure class="photo-vivid aspect-square reveal overflow-hidden rounded-sm">
+            <button type="button" class="lb-open absolute inset-0 z-[1] block cursor-zoom-in border-0 bg-transparent p-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-clay/50" data-src="/assets/hero-2.jpg" data-alt="シーズンの料理" aria-label="料理の写真を拡大">
+              <img src="/assets/hero-2.jpg" alt="" width="600" height="600" class="h-full w-full object-cover" loading="lazy" decoding="async">
+            </button>
+            <span class="atelier-cap">シーズン料理</span>
+          </figure>
+          <figure class="photo-vivid aspect-square reveal overflow-hidden rounded-sm">
+            <button type="button" class="lb-open absolute inset-0 z-[1] block cursor-zoom-in border-0 bg-transparent p-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-clay/50" data-src="/assets/hero-3.jpg" data-alt="ランチの彩り" aria-label="ランチの写真を拡大">
+              <img src="/assets/hero-3.jpg" alt="" width="600" height="600" class="h-full w-full object-cover" loading="lazy" decoding="async">
+            </button>
+            <span class="atelier-cap">ランチの彩り</span>
+          </figure>
+          <figure class="photo-vivid aspect-square reveal overflow-hidden rounded-sm">
+            <button type="button" class="lb-open absolute inset-0 z-[1] block cursor-zoom-in border-0 bg-transparent p-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-clay/50" data-src="/assets/gallery-b.jpg" data-alt="店内の食卓" aria-label="店内の写真を拡大">
+              <img src="/assets/gallery-b.jpg" alt="" width="600" height="600" class="h-full w-full object-cover" loading="lazy" decoding="async">
+            </button>
+            <span class="atelier-cap">店内の食卓</span>
+          </figure>
+          <figure class="photo-vivid aspect-square reveal overflow-hidden rounded-sm">
+            <button type="button" class="lb-open absolute inset-0 z-[1] block cursor-zoom-in border-0 bg-transparent p-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-clay/50" data-src="/assets/dinner.jpg" data-alt="ディナーコースのイメージ" aria-label="ディナーの写真を拡大">
+              <img src="/assets/dinner.jpg" alt="" width="600" height="600" class="h-full w-full object-cover" loading="lazy" decoding="async">
+            </button>
+            <span class="atelier-cap">ディナーコース</span>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote（demo 同等：複数の声） -->
+    <section class="py-20 md:py-28 bg-clay text-paper px-5 md:px-8" aria-labelledby="voices-title">
+      <div class="max-w-6xl mx-auto">
+        <h2 id="voices-title" class="sr-only">お客様の声</h2>
+        <div class="grid md:grid-cols-3 gap-10 md:gap-8">
+          <blockquote class="reveal text-center md:text-left border border-white/15 rounded-sm px-5 py-7 md:px-6 md:py-8 bg-white/[0.06]">
+            <p class="font-serif text-sm md:text-[15px] leading-loose font-light tracking-wide opacity-95">
+              「いろんな野菜がワンプレートに賑やかに盛り付けられて、楽しく食事できました。」
+            </p>
+            <p class="text-[10px] mt-6 tracking-[0.25em] opacity-65">── Google口コミより</p>
+          </blockquote>
+          <blockquote class="reveal text-center md:text-left border border-white/15 rounded-sm px-5 py-7 md:px-6 md:py-8 bg-white/[0.06]">
+            <p class="font-serif text-sm md:text-[15px] leading-loose font-light tracking-wide opacity-95">
+              「野菜がたくさんあって、ヘルシーなランチでした。ただヘルシーなだけでなく美味しい。」
+            </p>
+            <p class="text-[10px] mt-6 tracking-[0.25em] opacity-65">── Google口コミより</p>
+          </blockquote>
+          <blockquote class="reveal text-center md:text-left border border-white/15 rounded-sm px-5 py-7 md:px-6 md:py-8 bg-white/[0.06]">
+            <p class="font-serif text-sm md:text-[15px] leading-loose font-light tracking-wide opacity-95">
+              「小ぢんまりしたお店ですが、雰囲気がよく落ち着いて食事ができました。」
+            </p>
+            <p class="text-[10px] mt-6 tracking-[0.25em] opacity-65">── Google口コミより</p>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- Access minimal -->
+    <section class="scroll-mt-24 px-5 py-24 md:scroll-mt-28 md:py-36" id="access">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-start">
+        <div class="reveal">
+          <p class="font-serif text-rust text-[10px] tracking-[0.45em] mb-6">Visit</p>
+          <p class="font-serif text-clay text-2xl md:text-3xl mb-10">洋風厨房 五感</p>
+          <address class="not-italic text-mist text-sm leading-loose font-light tracking-wide space-y-1">
+            <p>〒719-1175</p>
+            <p>岡山県総社市清音上中島167-12</p>
+          </address>
+          <dl class="mt-10 space-y-6 text-sm text-mist font-light">
+            <div>
+              <dt class="font-serif text-ink text-xs tracking-widest mb-2">ランチ</dt>
+              <dd>11:30〜14:00（ラストオーダー）</dd>
+            </div>
+            <div>
+              <dt class="font-serif text-ink text-xs tracking-widest mb-2">ディナー</dt>
+              <dd>17:30〜20:30（ラストオーダー）</dd>
+            </div>
+            <div>
+              <dt class="font-serif text-ink text-xs tracking-widest mb-2">定休日</dt>
+              <dd>月曜（月に1回不定休あり）</dd>
+            </div>
+            <div>
+              <dt class="font-serif text-ink text-xs tracking-widest mb-2">お席・駐車場</dt>
+              <dd>最大18席（8名以上で貸切可）／専用駐車場 8台</dd>
+            </div>
+            <div>
+              <dt class="font-serif text-ink text-xs tracking-widest mb-2">お支払い</dt>
+              <dd>現金（詳細はお問い合わせください）</dd>
+            </div>
+          </dl>
+        </div>
+        <div class="reveal min-h-[240px] md:min-h-[320px] border border-stone-200/80 overflow-hidden">
+          <iframe title="地図" class="w-full h-full min-h-[240px] md:min-h-[320px]" style="border:0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen src="https://www.google.com/maps?q=34.6465951,133.7335958&z=15&output=embed&hl=ja"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- シェフ・信頼（1998年からの歩み＝タイムライン） -->
+    <section class="py-20 md:py-32 px-5 md:px-8 border-t border-stone-200/50" aria-labelledby="chef-title">
+      <div class="max-w-4xl mx-auto reveal">
+        <p class="font-serif text-rust text-[10px] tracking-[0.45em] mb-6 text-center">Heritage</p>
+        <h2 id="chef-title" class="font-serif text-center text-clay text-xl md:text-2xl tracking-wide mb-4">シェフの歩み</h2>
+        <p class="mb-12 text-center font-serif text-xs tracking-[0.2em] text-mist md:mb-14 md:text-sm">掲載は公開情報と店の申告に基づく事実のみです。</p>
+        <div class="border border-stone-200/90 bg-white/50 px-6 py-10 md:px-12 md:py-14">
+          <p class="font-serif text-center text-2xl md:text-3xl text-clay/90 tracking-[0.35em] mb-10 md:mb-12">1998<span class="text-base md:text-lg font-sans text-mist tracking-widest">年からの歩み</span></p>
+          <ol class="chef-timeline relative pl-0 md:pl-4 list-none space-y-0 max-w-2xl mx-auto">
+            <li class="chef-tl-item relative pl-9 md:pl-11 pb-10 md:pb-12">
+              <span class="absolute left-[0.1rem] md:left-[0.55rem] top-1 w-3 h-3 md:w-3.5 md:h-3.5 rounded-full bg-clay ring-4 ring-paper" aria-hidden="true"></span>
+              <p class="font-serif text-clay text-sm md:text-base tracking-wide mb-1">1998年</p>
+              <p class="text-mist text-xs md:text-sm leading-relaxed font-light">調理の仕事に就く。</p>
+            </li>
+            <li class="chef-tl-item relative pl-9 md:pl-11 pb-10 md:pb-12">
+              <span class="absolute left-[0.1rem] md:left-[0.55rem] top-1 w-3 h-3 md:w-3.5 md:h-3.5 rounded-full bg-rust ring-4 ring-paper" aria-hidden="true"></span>
+              <p class="font-serif text-clay text-sm md:text-base tracking-wide mb-1">全日空ホテルクレメント高松<span class="mt-0.5 block font-sans text-[11px] font-normal tracking-wide text-mist md:text-xs">（現 JRホテルクレメント高松）</span></p>
+              <p class="text-mist text-xs md:text-sm leading-relaxed font-light">カフェ＆レストラン、イタリアン、宴会婚礼などを担当。</p>
+            </li>
+            <li class="chef-tl-item relative pl-9 md:pl-11 pb-10 md:pb-12">
+              <span class="absolute left-[0.1rem] md:left-[0.55rem] top-1 w-3 h-3 md:w-3.5 md:h-3.5 rounded-full bg-clay ring-4 ring-paper" aria-hidden="true"></span>
+              <p class="font-serif text-clay text-sm md:text-base tracking-wide mb-1">メルパルク岡山</p>
+            </li>
+            <li class="chef-tl-item relative pl-9 md:pl-11 pb-2">
+              <span class="absolute left-[0.1rem] md:left-[0.55rem] top-1 w-3 h-3 md:w-3.5 md:h-3.5 rounded-full bg-clay ring-4 ring-paper" aria-hidden="true"></span>
+              <p class="font-serif text-clay text-sm md:text-base tracking-wide mb-1">2016年6月29日</p>
+              <p class="text-mist text-xs md:text-sm leading-relaxed font-light">岡山県総社市清音にて<strong class="font-medium text-ink/85">洋風厨房 五感</strong>を開業。</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA band -->
+    <section class="py-20 md:py-24 px-5 text-center border-t border-stone-200/60 bg-white/30">
+      <div class="max-w-xl mx-auto reveal">
+        <p class="font-serif text-clay text-xl md:text-2xl tracking-wide mb-4">お席のご用意を、<br class="sm:hidden">心よりお待ちしております。</p>
+        <a href="tel:0866315696" class="hidden md:inline-flex font-serif text-3xl text-clay hover:text-rust transition-colors tracking-wider">0866-31-5696</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-12 px-5 text-center text-mist text-[10px] tracking-[0.35em] border-t border-stone-200/50 pb-28 md:pb-12">
+    <img src="/assets/logo.png" alt="" width="120" height="38" class="h-8 w-auto mx-auto mb-4 opacity-80" loading="lazy" onerror="this.src='/assets/logo-fallback.svg'">
+    <p>© 洋風厨房 五感</p>
+  </footer>
+
+  <button type="button" id="to-top" aria-label="ページの先頭へ戻る">↑</button>
+
+  <!-- ライトボックス -->
+  <div id="lightbox" class="fixed inset-0 z-[80] hidden flex-col items-center justify-center bg-black/88 p-4 md:p-8" role="dialog" aria-modal="true" aria-labelledby="lb-title" aria-hidden="true">
+    <p id="lb-title" class="sr-only">拡大画像</p>
+    <button type="button" id="lb-close" class="absolute top-4 right-4 md:top-6 md:right-6 text-white/90 text-3xl font-light leading-none w-12 h-12 flex items-center justify-center rounded-full border border-white/30 hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-white" aria-label="閉じる">×</button>
+    <img id="lb-img" src="" alt="" class="max-h-[min(85dvh,900px)] max-w-full w-auto object-contain shadow-2xl">
+  </div>
+
+  <!-- Mobile CTA：熟成ソース風の赤褐グラデ（押しやすさ強調） -->
+  <div class="mobile-cta-sauce safe-area-pb fixed inset-x-0 bottom-0 z-[60] md:hidden">
+    <a href="tel:0866315696" class="flex min-h-[3.95rem] flex-col items-center justify-center px-4 py-4 active:brightness-110">
+      <span class="text-[11px] text-white/95 font-medium tracking-[0.06em] leading-snug text-center">【今すぐ電話で空席確認】</span>
+      <span class="font-serif text-[1.2rem] text-white tracking-[0.08em] mt-1 drop-shadow-sm">0866-31-5696</span>
+    </a>
+  </div>
+
+  <style>
+    .safe-area-pb { padding-bottom: max(0.65rem, env(safe-area-inset-bottom)); }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  </style>
+  <script>
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var header = document.getElementById('site-header');
+      var headerH = header ? header.offsetHeight : 64;
+
+      document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        var href = a.getAttribute('href');
+        if (!href || href === '#' || href.length < 2) return;
+        a.addEventListener('click', function (ev) {
+          if (ev.defaultPrevented || ev.button !== 0 || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return;
+          if (href === '#top') {
+            ev.preventDefault();
+            window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+            return;
+          }
+          var target = document.querySelector(href);
+          if (!target) return;
+          ev.preventDefault();
+          var y = target.getBoundingClientRect().top + window.scrollY - headerH - 6;
+          window.scrollTo({ top: Math.max(0, y), behavior: reduce ? 'auto' : 'smooth' });
+        });
+      });
+
+      var toTop = document.getElementById('to-top');
+      if (toTop) {
+        function toggleToTop() {
+          if (window.scrollY > 420) toTop.classList.add('is-visible');
+          else toTop.classList.remove('is-visible');
+        }
+        toggleToTop();
+        window.addEventListener('scroll', toggleToTop, { passive: true });
+        toTop.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+        });
+      }
+
+      if (reduce) {
+        document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
+      } else {
+        var els = document.querySelectorAll('.reveal');
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              e.target.classList.add('is-visible');
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+        els.forEach(function (el) { io.observe(el); });
+      }
+
+      var lb = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lb-img');
+      var lbClose = document.getElementById('lb-close');
+      if (!lb || !lbImg) return;
+
+      function openLb(src, alt) {
+        lbImg.src = src;
+        lbImg.alt = alt || '';
+        lb.classList.remove('hidden');
+        lb.classList.add('is-open');
+        lb.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        lbClose.focus();
+      }
+      function closeLb() {
+        lb.classList.add('hidden');
+        lb.classList.remove('is-open');
+        lb.setAttribute('aria-hidden', 'true');
+        lbImg.src = '';
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('.lb-open').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          openLb(btn.getAttribute('data-src'), btn.getAttribute('data-alt'));
+        });
+      });
+      if (lbClose) lbClose.addEventListener('click', closeLb);
+      lb.addEventListener('click', function (ev) {
+        if (ev.target === lb) closeLb();
+      });
+      document.addEventListener('keydown', function (ev) {
+        if (ev.key === 'Escape' && lb.classList.contains('is-open')) closeLb();
+      });
+    })();
+  </script>
+</body>
+</html>
